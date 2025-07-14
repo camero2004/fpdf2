@@ -1,0 +1,175 @@
+from fpdf import FPDF
+
+
+
+# Create a PDF class
+
+class PDF(FPDF):
+
+    def header(self):
+
+        self.set_font("Arial", "B", 14)
+
+        self.cell(0, 10, "Reviewer: Global Demography & Feminism and Population Growth", ln=True, align="C")
+
+        self.ln(5)
+
+
+
+    def chapter_title(self, title):
+
+        self.set_font("Arial", "B", 12)
+
+        self.cell(0, 10, title, ln=True)
+
+        self.ln(2)
+
+
+
+    def chapter_body(self, text):
+
+        self.set_font("Arial", "", 10)
+
+        self.multi_cell(0, 5, text)
+
+        self.ln()
+
+
+
+    def add_bullets(self, items):
+
+        self.set_font("Arial", "", 10)
+
+        for item in items:
+
+            self.cell(5)
+
+            self.cell(0, 5, f"• {item}", ln=True)
+
+        self.ln()
+
+
+
+# Initialize PDF
+
+pdf = PDF()
+
+pdf.add_page()
+
+
+
+# Section 1: Module 11
+
+pdf.chapter_title("Module 11: Global Demography")
+
+pdf.chapter_body("This module focuses on population growth theories, particularly the Malthusian Theory, and its relevance today.")
+
+
+
+pdf.chapter_title("Key Concepts")
+
+pdf.add_bullets([
+
+    "Thomas Malthus: Population grows geometrically; food supply grows arithmetically.",
+
+    "Preventative Checks: Delayed marriage, moral restraint, birth control.",
+
+    "Positive Checks: Disease, war, famine, natural disasters.",
+
+    "Malthusian Population Theory: Poverty and hunger are natural consequences of overpopulation.",
+
+    "Criticism: Malthus underestimated technology’s role in increasing food production.",
+
+    "Demography: Study of population characteristics like age, race, sex."
+
+])
+
+
+
+pdf.chapter_title("Summary")
+
+pdf.chapter_body("""
+
+Thomas Malthus argued that unchecked population growth would outpace food supply, causing widespread poverty and hunger. He proposed two types of checks to control population: preventative (e.g., delayed marriage) and positive (e.g., famine, war). Despite dire predictions, modern advancements have proven many of his fears avoidable through technology. However, concerns about climate change and environmental impacts remain relevant.
+
+""")
+
+
+
+pdf.chapter_title("Sample Questions")
+
+pdf.add_bullets([
+
+    "Q: What are Malthus’s two types of checks on population growth?\nA: Preventative (reduce birth rate) and Positive (increase death rate).",
+
+    "Q: Why did Malthus believe poverty was inevitable?\nA: Because population would always outgrow food supply.",
+
+    "Q: How has technology challenged Malthus’s theory?\nA: Innovations in agriculture have increased food supply to match population growth."
+
+])
+
+
+
+# Section 2: Module 12
+
+pdf.add_page()
+
+pdf.chapter_title("Module 12: Feminism and Population Growth")
+
+pdf.chapter_body("This module explores the intersection of feminism, reproductive rights, and their influence on fertility rates and economic trends.")
+
+
+
+pdf.chapter_title("Key Concepts")
+
+pdf.add_bullets([
+
+    "Third Wave Feminism: Modern feminist movement emphasizing diversity and empowerment.",
+
+    "Demographic Transition: Shift to lower birth and death rates due to modernization.",
+
+    "Critique of Marriage: Seen by feminists as a barrier to gender equality.",
+
+    "Contraceptive Revolution: Widespread use of birth control pill empowered women.",
+
+    "Labor Participation: Rise in employed married women from 1960 to 1980.",
+
+    "Social Factors: Personal and cultural values now heavily influence birth rates."
+
+])
+
+
+
+pdf.chapter_title("Summary")
+
+pdf.chapter_body("""
+
+As societies modernize, fertility often declines — a pattern explained by the demographic transition. Feminist movements, especially the Third Wave, challenge traditional gender roles, linking social change with reduced fertility. The birth control pill revolutionized women's autonomy, allowing career advancement and smaller families. Despite economic challenges like the Great Depression, fertility rates followed existing cultural trends, not purely economic conditions.
+
+""")
+
+
+
+pdf.chapter_title("Sample Questions")
+
+pdf.add_bullets([
+
+    "Q: What is the significance of the Pill?\nA: It gave women reproductive control and contributed to career advancement.",
+
+    "Q: What does the demographic transition model show?\nA: Population growth slows as societies become more developed.",
+
+    "Q: How did feminist views impact fertility?\nA: Women chose smaller families and delayed childbirth to pursue careers."
+
+])
+
+
+
+# Save PDF
+
+output_path = "/mnt/data/Global_Demography_and_Feminism_Reviewer.pdf"
+
+pdf.output(output_path)
+
+
+
+output_path
